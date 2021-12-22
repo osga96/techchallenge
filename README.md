@@ -69,3 +69,7 @@ Then click the start server button to start the smtp server.
 ## And voila!
 
 We will see our app in any web browser when navigating to http://localhost:9900
+
+# Swagger API reference
+
+https://app.swaggerhub.com/apis/osga96/subscription-api/1.0.0
