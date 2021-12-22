@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Subscribe to the newsletter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/subscribe}" th:object="${subscription}" method="post">
+        <p>e-mail*: <input type="text" th:field="*{email}" required="true"/></p>
+        <p>First name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Gender: <input type="text" th:field="*{gender}" /></p>
+        <p>Birth date*: <input type="date" th:field="*{stringBirthDate}" required="true"/></p>
+        <p>I give consent about my email being stored*: <input type="checkbox" th:field="*{flagForConsent}" required="true"/></p>
+
+        <p>
+            <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        </p>
+    </form>
+</body>
+</html>

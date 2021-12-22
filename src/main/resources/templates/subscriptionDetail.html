@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+
+        <title>Subscription detail</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    </head>
+    <body>
+
+        <h1>Result</h1>
+        <p th:text="'email: ' + ${subscription.email}" ></p>
+        <p th:text="'firstName: ' + ${subscription.firstName}" ></p>
+        <p th:text="'gender: ' + ${subscription.gender}" ></p>
+        <p th:text="'flagForConsent: ' + ${subscription.flagForConsent}" ></p>
+
+        <p>Click <a th:href="@{/}">here</a> to go back.</p>
+
+    </body>
+</html>

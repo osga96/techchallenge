@@ -1,0 +1,9 @@
+CREATE TABLE `TECHCHALLENGE` (
+	`newsletterId` INT NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NOT NULL DEFAULT '',
+	`firstName` VARCHAR(255) DEFAULT '',
+	`gender` VARCHAR(20) DEFAULT '',
+	`dateOfBirth` DATE DEFAULT NULL,
+	`flagForConsent` BOOLEAN,
+	PRIMARY KEY (`newsletterId`)
+);

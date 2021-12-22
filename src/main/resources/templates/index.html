@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Newsletter subscription</title>
+    </head>
+
+    <body>
+        <h1>Welcome!</h1>
+
+        <p>Click <a th:href="@{/subscribe}">here</a> to subscribe to our newsletter.</p>
+
+        <hr/>
+
+        Cancel your subscription:
+
+        <form action="#" th:action="@{/cancelSubscription}" method="get">
+            <p>email: <input type="text" name="email" /></p>
+
+            <p>
+                <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+            </p>
+        </form>
+
+        <hr/>
+
+        Search for the detail of a specific subscription with the following email:
+
+        <form action="#" th:action="@{/findSubscriptionDetail}" method="get">
+            <p>email: <input type="text" name="email" /></p>
+
+            <p>
+                <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+            </p>
+        </form>
+
+        <hr/>
+
+        <a href="/all">List all subscriptions</a>
+
+    </body>
+</html>

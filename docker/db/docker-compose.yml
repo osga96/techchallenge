@@ -1,0 +1,18 @@
+version: '1.0'
+
+services:
+  challenge-db:
+    image: mysql:8.0.27
+    restart: always
+    ports:
+      - 9800:3306
+    expose:
+      - 3306
+    volumes:
+      - challenge-db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'TECHCHALLENGE'
+      MYSQL_ROOT_PASSWORD: 'root'
+
+volumes:
+  challenge-db:
