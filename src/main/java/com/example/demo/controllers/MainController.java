@@ -3,7 +3,10 @@ package com.example.demo.controllers;
 import com.example.demo.entities.Subscription;
 import com.example.demo.mail.EmailService;
 import com.example.demo.repositories.SubscriptionRepository;
+import com.sun.mail.util.MailConnectException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,13 +72,20 @@ public class MainController {
             Date parsedDate = format.parse(subscription.getStringBirthDate());
             subscription.setBirthDate(parsedDate);
 
-        } catch (ParseException e) {
-            return "error";
-        }
+            subscriptionRepository.save(subscription);
+            emailService.sendSimpleMessage(subscription.getEmail(), "Thank you for subscribing to our newsletter!", "Lorem ipsum");
+            model.addAttribute("subscription", subscription);
 
-        subscriptionRepository.save(subscription);
-        emailService.sendSimpleMessage(subscription.getEmail(), "Thank you for subscribing to our newsletter!", "Lorem ipsum");
-        model.addAttribute("subscription", subscription);
+        } catch (ParseException e) {
+            System.out.println("Date couldn't be parsed: " + e.getMessage());
+            return "error";
+        } catch (MailConnectException e) {
+            System.out.println("The mail service is unreachable: " + e.getMessage());
+            return "mailServiceUnavailable";
+        } catch (DataIntegrityViolationException e) {
+            System.out.println("Duplicated email in subscription database: " + e.getMessage());
+            return "duplicateEmail";
+        }
         return "success";
 
     }

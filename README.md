@@ -46,7 +46,11 @@ once we have this IP we'll go to [project_folder]/main/resources/application.pro
 
 > spring.datasource.url=jdbc:mysql://192.168.0.123:9800/TECHCHALLENGE
 
-When this is set, we can execute the gradle build task and we'll see our jar file in [project_folder]/build/libs
+When this is set, we have to set also our IP to the mail service:
+
+> spring.mail.host=192.168.0.123
+
+Then we can execute the gradle build task and we'll see our jar file in [project_folder]/build/libs
 
 ### Build the front container
 
@@ -64,7 +68,7 @@ Execute the fakeSMTP.jar app so the mail server can be started to be consumed by
 
 > java -jar [project_folder]/utilities/fakeSMTP-2.0.jar
 
-Then click the start server button to start the smtp server.
+Then click the start server button to start the smtp server, in order to use test this functionality, as soon as we subscribe using a non duplicated email, we should see a new mail in the app's window.
 
 ## And voila!
 

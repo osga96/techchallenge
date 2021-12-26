@@ -9,6 +9,7 @@ public class Subscription {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer newsletterId;
 
+    @Column(unique=true)
     private String email;
     private String firstName;
     private String gender;

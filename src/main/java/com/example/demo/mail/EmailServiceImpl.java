@@ -1,5 +1,6 @@
 package com.example.demo.mail;
 
+import com.sun.mail.util.MailConnectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,7 +13,7 @@ public class EmailServiceImpl implements EmailService {
     private JavaMailSender emailSender;
 
     public void sendSimpleMessage(
-            String to, String subject, String text) {
+            String to, String subject, String text) throws MailConnectException {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("test@mail.com");
