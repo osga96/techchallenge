@@ -47,12 +47,8 @@ public class MainController {
 
     @GetMapping("/cancelSubscription")
     public String cancelSubscription(String email, Model model) {
-
-        if (subscriptionRepository.findByEmail(email) == null) {
-            return "noResults";
-        }
         subscriptionRepository.delete(subscriptionRepository.findByEmail(email));
-        return "subscriptionDetail";
+        return "subscriptionCancelled";
     }
 
     @GetMapping("/subscribe")
